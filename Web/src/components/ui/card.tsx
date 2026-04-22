@@ -38,15 +38,6 @@ function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="card-description"
-      className={cn("text-muted-foreground text-sm", className)}
-      {...props}
-    />
-  )
-}
 
 function CardAction({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -56,6 +47,17 @@ function CardAction({ className, ...props }: React.ComponentProps<"div">) {
         "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
         className
       )}
+      {...props}
+    />
+  )
+}
+
+// CardDescription is a simple component that renders a div with the appropriate styling for the card description text.
+function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-description"
+      className={cn("text-muted-foreground text-sm", className)}
       {...props}
     />
   )
