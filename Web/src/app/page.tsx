@@ -12,6 +12,7 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import QRCode from "qrcode";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { ParticleBackground } from "@/components/ui/particle-background";
 
 const socket: Socket = io(process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:4000");
 
@@ -212,19 +213,22 @@ const chunkSize = 1024 * 1024;
   }, [fileReceived, incomingFile, receivedChunks]);
 
   return (
-    <div className="min-h-screen bg-background cyber-grid relative overflow-hidden transition-colors duration-500">
-      {/* Animated background components & glass blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none flex items-center justify-center">
-        {/* Large atmospheric blobs */}
-        <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-primary/20 dark:bg-primary/10 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '8s' }}></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-amber-400/20 dark:bg-amber-400/10 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '10s' }}></div>
-        <div className="absolute top-[40%] left-[60%] w-[30vw] h-[30vw] bg-orange-400/20 dark:bg-orange-400/10 rounded-full blur-[80px] animate-pulse" style={{ animationDuration: '7s' }}></div>
+    <div className="min-h-screen bg-background relative overflow-hidden transition-colors duration-500">
+      {/* Dynamic Particle Background */}
+      <ParticleBackground 
+        particleCount={80} 
+        particleOpacity={0.6} 
+        mouseInfluence={150} 
+        mouseGravity="attract" 
+        interactionType="bounce"
+      />
 
-        {/* Floating particles */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary/40 rounded-full animate-pulse"></div>
-        <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-primary/50 rounded-full animate-ping"></div>
-        <div className="absolute top-1/2 left-3/4 w-1.5 h-1.5 bg-primary/40 rounded-full animate-pulse"></div>
-        <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-amber-400/40 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+      {/* Animated background components & glass blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none flex items-center justify-center -z-10">
+        {/* Large atmospheric blobs for nice glow behind particles */}
+        <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-primary/10 dark:bg-primary/5 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '8s' }}></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-amber-400/10 dark:bg-amber-400/5 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '10s' }}></div>
+        <div className="absolute top-[40%] left-[60%] w-[30vw] h-[30vw] bg-orange-400/10 dark:bg-orange-400/5 rounded-full blur-[80px] animate-pulse" style={{ animationDuration: '7s' }}></div>
       </div>
 
       <div className="relative z-10 container max-w-md mx-auto px-4 py-8">
