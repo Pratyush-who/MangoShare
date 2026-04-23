@@ -11,6 +11,20 @@ interface ParticleBackgroundProps {
   blur?: boolean;
 }
 
+interface Particle {
+  id: number;
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  size: number;
+  color: string;
+  opacity: number;
+  baseOpacity: number;
+  pulsePhase: number;
+  pulseSpeed: number;
+}
+
 export function ParticleBackground({
   particleCount = 30,
   particleSize = 4,
@@ -21,7 +35,7 @@ export function ParticleBackground({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number>(0);
-  const particlesRef = useRef<any[]>([]);
+  const particlesRef = useRef<Particle[]>([]);
   const { resolvedTheme } = useTheme();
 
   // 3 distinct colors for a rich, vibrant look, customized by theme

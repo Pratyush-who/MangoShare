@@ -1,0 +1,48 @@
+name: Lint Check
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint-web:
+    name: Lint Web
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./Web
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Lint
+        run: npm run lint
+
+  lint-socket:
+    name: Lint Socket
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./MangoShare-Socket
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Type Check
+        run: npm run check
