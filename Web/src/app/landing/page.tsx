@@ -64,12 +64,12 @@ export default function LandingPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             <Link href="/" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full bg-yellow-neon text-black hover:bg-yellow-400 font-bold terminal-text btn-neon h-12 px-8 text-lg">
+              <Button size="lg" className="w-full bg-[#FACC15] text-black hover:bg-[#EAB308] font-bold terminal-text btn-neon h-12 px-8 text-lg">
                 Start Sharing <ChevronRight className="ml-2 size-5" />
               </Button>
             </Link>
             <Link href="#features" className="w-full sm:w-auto">
-              <Button size="lg" variant="outline" className="w-full border-border hover:bg-white/5 h-12 px-8 text-lg terminal-text">
+              <Button size="lg" variant="outline" className="w-full border-[#FACC15]/50 hover:text-black btn-neon h-12 px-8 text-lg terminal-text transition-all">
                 Learn More
               </Button>
             </Link>
