@@ -10,7 +10,7 @@ RUN npm install
 COPY . .
 
 # Provide the backend URL for the build context
-ARG NEXT_PUBLIC_SOCKET_URL=http://localhost:4000
+ARG NEXT_PUBLIC_SOCKET_URL=http://localhost:8000
 ENV NEXT_PUBLIC_SOCKET_URL=$NEXT_PUBLIC_SOCKET_URL
 
 # Build the Next.js application

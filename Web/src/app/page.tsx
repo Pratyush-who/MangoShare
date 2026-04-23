@@ -14,7 +14,7 @@ import QRCode from "qrcode";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { CursorLightDots } from "@/components/ui/cursor-light-dots";
 
-const socket: Socket = io(process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:4000");
+const socket: Socket = io(process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:8000");
 
 export default function FileSharePage() {
   const { theme, setTheme } = useTheme();

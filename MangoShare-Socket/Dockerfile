@@ -12,8 +12,8 @@ COPY . .
 # Build the typescript code
 RUN npm run build
 
-# Expose port 4000 to the host
-EXPOSE 4000
+# Expose port 8000 to the host
+EXPOSE 8000
 
 # Start the socket server
 CMD ["npm", "start"]
