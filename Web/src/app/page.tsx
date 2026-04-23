@@ -12,7 +12,7 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import QRCode from "qrcode";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { InteractiveGradient } from "@/components/ui/interactive-gradient";
+import { CursorLightDots } from "@/components/ui/cursor-light-dots";
 
 const socket: Socket = io(process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:4000");
 
@@ -214,8 +214,7 @@ const chunkSize = 1024 * 1024;
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden transition-colors duration-500">
-      {/* Interactive Aurora Gradient Background */}
-      <InteractiveGradient intensity={60} />
+      <CursorLightDots />
 
       <div className="relative z-10 container max-w-md mx-auto px-4 py-8">
         {/* Header */}

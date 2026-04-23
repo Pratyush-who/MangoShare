@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/sonner";
 
+
 const jetbrainsMono = JetBrains_Mono({ 
   subsets: ["latin"],
   variable: "--font-mono",
@@ -54,16 +55,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${jetbrainsMono.variable} antialiased terminal-style`}>
+      <body className={`${jetbrainsMono.variable} antialiased bg-background text-foreground terminal-style`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          <div className="cyber-grid min-h-screen">
-            {children}
-          </div>
+          {children}
           <Toaster />
         </ThemeProvider>
       </body>
