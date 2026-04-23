@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  socket:
+    build:
+      context: ./MangoShare-Socket
+      dockerfile: Dockerfile
+    container_name: mangoshare-socket
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./Web
+      dockerfile: Dockerfile
+      args:
+        # Pass the exposed socket port internally to the Next.js app during build
+        NEXT_PUBLIC_SOCKET_URL: http://localhost:4000
+    container_name: mangoshare-web
+    ports:
+      - "3000:3000"
+    environment:
+      # Tell the frontend application to point to the local backend port (on the host network)
+      - NEXT_PUBLIC_SOCKET_URL=http://localhost:4000
+    depends_on:
+      - socket
+    restart: unless-stopped
