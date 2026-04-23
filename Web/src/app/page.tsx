@@ -212,12 +212,19 @@ const chunkSize = 1024 * 1024;
   }, [fileReceived, incomingFile, receivedChunks]);
 
   return (
-    <div className="min-h-screen bg-background cyber-grid relative overflow-hidden">
-      {/* Animated background particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary/20 rounded-full animate-pulse"></div>
-        <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-primary/30 rounded-full animate-ping"></div>
-        <div className="absolute top-1/2 left-3/4 w-1.5 h-1.5 bg-primary/25 rounded-full animate-pulse"></div>
+    <div className="min-h-screen bg-background cyber-grid relative overflow-hidden transition-colors duration-500">
+      {/* Animated background components & glass blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none flex items-center justify-center">
+        {/* Large atmospheric blobs */}
+        <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-primary/20 dark:bg-primary/10 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '8s' }}></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-amber-400/20 dark:bg-amber-400/10 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '10s' }}></div>
+        <div className="absolute top-[40%] left-[60%] w-[30vw] h-[30vw] bg-orange-400/20 dark:bg-orange-400/10 rounded-full blur-[80px] animate-pulse" style={{ animationDuration: '7s' }}></div>
+
+        {/* Floating particles */}
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary/40 rounded-full animate-pulse"></div>
+        <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-primary/50 rounded-full animate-ping"></div>
+        <div className="absolute top-1/2 left-3/4 w-1.5 h-1.5 bg-primary/40 rounded-full animate-pulse"></div>
+        <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-amber-400/40 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
       <div className="relative z-10 container max-w-md mx-auto px-4 py-8">
@@ -243,8 +250,9 @@ const chunkSize = 1024 * 1024;
         </div>
 
         {/* Main Card */}
-        <Card className="card-hover bg-card/80 backdrop-blur-sm">
-          <CardContent className="p-6 space-y-6">
+        <Card className="card-hover bg-card/60 backdrop-blur-xl border border-border shadow-2xl relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/10 dark:from-white/5 dark:to-transparent pointer-events-none"></div>
+          <CardContent className="p-6 space-y-6 relative z-10">
             {/* Status Display */}
             <div className="text-center space-y-2">
               <div className="flex items-center justify-center gap-2 font-mono text-sm">
@@ -624,8 +632,9 @@ const chunkSize = 1024 * 1024;
         </Card>
 
         {/* Cool Instructions Section */}
-        <Card className="card-hover bg-card/60 backdrop-blur-sm border border-primary/30 border-glow mt-4">
-          <CardContent className="p-6">
+        <Card className="card-hover bg-card/60 backdrop-blur-xl border border-primary/20 shadow-xl border-glow mt-4 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/10 dark:from-white/5 dark:to-transparent pointer-events-none"></div>
+          <CardContent className="p-6 relative z-10">
             <div className="text-center mb-4">
               <h2 className="text-lg font-bold text-primary font-mono neon-text animate-neon-flicker">
                 &gt; HOW_TO_USE_MANGOSHARE
