@@ -1,0 +1,26 @@
+name: Send Email Notification on push to main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  send-email:
+    name: Send Email Alert
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Email via EmailJS API
+        run: |
+          curl -X POST https://api.emailjs.com/api/v1.0/email/send \
+          -H 'Content-Type: application/json' \
+          -d '{
+            "service_id": "${{ secrets.EMAILJS_SERVICE_ID }}",
+            "template_id": "${{ secrets.EMAILJS_TEMPLATE_ID }}",
+            "user_id": "${{ secrets.EMAILJS_PUBLIC_KEY }}",
+            "accessToken": "${{ secrets.EMAILJS_PRIVATE_KEY }}",
+            "template_params": {
+              "message": "A new commit was pushed to the main branch.",
+              "commit_url": "${{ github.event.head_commit.url }}"
+            }
+          }'

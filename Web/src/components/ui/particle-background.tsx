@@ -24,6 +24,8 @@ interface Particle {
   pulsePhase: number;
   pulseSpeed: number;
 }
+ 
+//testr of lint and all test 2
 
 export function ParticleBackground({
   particleCount = 30,
